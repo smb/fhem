@@ -1,0 +1,20 @@
+# Created by FHEM/98_SVG.pm, 2014-05-03 18:21:21
+set terminal png transparent size <SIZE> crop
+set output '<OUT>.png'
+set xdata time
+set timefmt "%Y-%m-%d_%H:%M:%S"
+set xlabel " "
+set title '<TL>'
+set ytics nomirror
+set y2tics 
+set grid y2tics
+set ylabel "<L1>"
+set y2label "<L2>"
+set yrange [0:]
+set y2range [0:]
+
+#FileLog 6:Stromzaehler.CNT\x3a::
+#FileLog 8:Stromzaehler.CNT\x3a:0:
+
+plot "<IN>" using 1:2 axes x1y2 title '<L2>' ls l0 lw 1 with fsteps,\
+     "<IN>" using 1:2 axes x1y1 title '<L1>' ls l1fill lw 1 with fsteps
